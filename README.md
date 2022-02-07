@@ -4,8 +4,7 @@
 
 > One paragraph statement about the project.
 
-![screenshot](./assets/images/Screenshot.png)
-![screenshot](./assets/images/Desktop.png)
+![screenshot]()
 
 Additional description about the project and its features.
 
@@ -17,7 +16,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://vikipretium.github.io/portfolio_project/)
+[Live Demo Link](https://vikipretium.github.io/)
 
 ## Author
 
@@ -27,14 +26,11 @@ Additional description about the project and its features.
 - Twitter: [@vikipretium](https://twitter.com/vikipretium)
 - LinkedIn: [vikipretium](https://linkedin.com/in/vikipretium)
 
-👤 ****
+👤 **Mwafrika Josue**
 
-- GitHub: [@vikipretium](https://github.com/vikipretium)
-- Twitter: [@vikipretium](https://twitter.com/vikipretium)
-- LinkedIn: [vikipretium](https://linkedin.com/in/vikipretium)
-
-
-
+- GitHub: [@mwafrika](https://github.com/mwafrika)
+- Twitter: [@mwafrika](https://twitter.com/mwafrikamufung1)
+- LinkedIn: [mwafrika](https://linkedin.com/in/mwafrika-mufungizi)
 
 Contributions, issues, and feature requests are welcome!
 
