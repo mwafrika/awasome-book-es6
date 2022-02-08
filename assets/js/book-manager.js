@@ -37,12 +37,15 @@ class Book {
 
   static removeToLocalStorage(id) {
     let books = Book.getToloStorage();
-    books.forEach((book, index) => {
-      if (index === id) {
-        book.splice(index, 1);
+    let tempBooks = [];
+    console.log(books);
+    books.forEach((book, index) => {   
+      if (index !== parseInt(id)) {
+        tempBooks.push(book);
       }
     });
-
+    books  = tempBooks;
+    console.log(tempBooks);
     localStorage.setItem('books', JSON.stringify(books));
   }
 
@@ -57,7 +60,7 @@ class Book {
         <p>${book.title}</p>
         <p>${book.author}</p>
         <button type="submit" class="remove-button">Remove</button>
-        </div
+        </div>
         `;
     bookShelf.appendChild(bookCard);
   }
