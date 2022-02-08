@@ -25,6 +25,8 @@ function showBook(book) {
   bookCard.innerHTML += `
  <p>${book.title}</p>
  <p>${book.author}</p>
+ <button type="button" class="remove-button">Remove</button>
+
  `;
   bookShelf.appendChild(bookCard);
   return book;
@@ -36,3 +38,13 @@ function clearFields() {
 }
 
 addButton.addEventListener('click', addBook);
+
+function removeButton(element){
+  if(element.classList.contains('remove-button')){
+    element.parentElement.remove();
+  }
+}
+
+bookCard.addEventListener('click' , function(event){
+  removeButton(event.target);
+})
