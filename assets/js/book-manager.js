@@ -4,46 +4,72 @@ const addButton = document.querySelector('.add-button');
 const bookShelf = document.querySelector('.book-shelf');
 let bookCard = document.createElement('div');
 
-let bookList = [];
+class BookList {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
+}
 
-// add function
+class Book {
+  static removeButton(element) {
+    if (element.classList.contains('remove-button')) {
+      element.parentElement.remove(element);
+    }
+  }
 
-function addBook() {
+  static saveToLocalStorage() {}
+
+  static clearFields() {
+    inputTitle.value = '';
+    inputAuthor.value = '';
+  }
+  static addBook(book) {
+    bookCard.innerHTML += `
+   <div>
+   <p>${book.title}</p>
+   <p>${book.author}</p>
+   <button type="submit" class="remove-button">Remove</button>
+   </div
+   `;
+    bookShelf.appendChild(bookCard);
+  }
+
+  static showBook() {
+    const obj = [
+      {
+        title: 'geo',
+        author: 'RDC',
+      },
+      {
+        title: 'histore',
+        author: 'Rwanda',
+      },
+      {
+        title: 'histore 3',
+        author: 'Rwanda',
+      },
+    ];
+
+    obj.forEach((book) => {
+      Book.addBook(book);
+    });
+  }
+}
+
+document.querySelector('.book-input').addEventListener('submit', (e) => {
+  e.preventDefault();
   const title = inputTitle.value;
   const author = inputAuthor.value;
-  const book = { title, author };
+
   if (title && author) {
-    bookList.push(book);
-    showBook(book);
-    clearFields();
-    console.log(book);
+    const bookList = new BookList(title, author);
+    Book.addBook(bookList);
+    Book.clearFields();
   }
-}
+});
 
-function showBook(book) {
-  bookCard.innerHTML += `
- <p>${book.title}</p>
- <p>${book.author}</p>
- <button type="button" class="remove-button">Remove</button>
-
- `;
-  bookShelf.appendChild(bookCard);
-  return book;
-}
-
-function clearFields() {
-  inputTitle.value = '';
-  inputAuthor.value = '';
-}
-
-addButton.addEventListener('click', addBook);
-
-function removeButton(element){
-  if(element.classList.contains('remove-button')){
-    element.parentElement.remove();
-  }
-}
-
-bookCard.addEventListener('click' , function(event){
-  removeButton(event.target);
-})
+bookShelf.addEventListener('click', function (event) {
+  Book.removeButton(event.target);
+});
+document.addEventListener('DOMContentLoaded', Book.showBook);
