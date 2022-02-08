@@ -21,7 +21,6 @@ function addBook() {
 }
 
 function showBook(book) {
-
   bookCard.innerHTML += `
  <p>${book.title}</p>
  <p>${book.author}</p>
