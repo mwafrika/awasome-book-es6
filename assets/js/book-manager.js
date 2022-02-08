@@ -14,6 +14,7 @@ function addBook() {
   if (title && author) {
     bookList.push(book);
     showBook(book);
+    clearFields();
     console.log(book);
   }
 }
@@ -22,11 +23,16 @@ function showBook(book) {
   const bookCard = document.createElement('div');
 
   bookCard.innerHTML = `
- <h3>${book.title}</h3>
- <h3>${book.author}</h3>
+ <p>${book.title}</p>
+ <p>${book.author}</p>
  `;
   bookShelf.appendChild(bookCard);
   return book;
+}
+
+function clearFields() {
+  inputTitle.value = '';
+  inputAuthor.value = '';
 }
 
 addButton.addEventListener('click', addBook);
