@@ -2,6 +2,7 @@ const inputTitle = document.querySelector('.input-title');
 const inputAuthor = document.querySelector('.input-author');
 const addButton = document.querySelector('.add-button');
 const bookShelf = document.querySelector('.book-shelf');
+let bookCard = document.createElement('div');
 
 let bookList = [];
 
@@ -20,9 +21,8 @@ function addBook() {
 }
 
 function showBook(book) {
-  const bookCard = document.createElement('div');
 
-  bookCard.innerHTML = `
+  bookCard.innerHTML += `
  <p>${book.title}</p>
  <p>${book.author}</p>
  `;
