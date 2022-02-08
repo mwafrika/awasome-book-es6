@@ -38,7 +38,6 @@ class Book {
   static removeToLocalStorage(id) {
     let books = Book.getToloStorage();
     books.forEach((book, index) => {
-      console.log('Book removed', index);
       if (index === id) {
         book.splice(index, 1);
       }
@@ -52,9 +51,9 @@ class Book {
     inputAuthor.value = '';
   }
 
-  static addBook(book) {
+  static addBook(book, id) {
     bookCard.innerHTML += `
-        <div>
+        <div id=${id}>
         <p>${book.title}</p>
         <p>${book.author}</p>
         <button type="submit" class="remove-button">Remove</button>
@@ -68,8 +67,7 @@ class Book {
 
     obj.forEach((book, index) => {
       console.log('itemsss', index);
-      Mybooks.push(index);
-      Book.addBook(book);
+      Book.addBook(book, index);
     });
   }
 }
@@ -88,7 +86,9 @@ document.querySelector('.book-input').addEventListener('submit', (e) => {
 });
 
 bookShelf.addEventListener('click', function (event) {
-  //   console.log('id', +event.target.dataset.id);
+  console.log('Parent', event.target.parentElement.id);
+
   Book.removeButton(event.target);
+  Book.removeToLocalStorage(event.target.parentElement.id);
 });
 document.addEventListener('DOMContentLoaded', Book.showBook);
