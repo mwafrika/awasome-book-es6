@@ -3,7 +3,7 @@ const inputAuthor = document.querySelector('.input-author');
 const bookShelf = document.querySelector('.book-shelf');
 const bookCard = document.createElement('div');
 
-const randomId = () => Math.round(Math.random() * 1000000); 
+const randomId = () => Math.round(Math.random() * 100);
 
 function populateLocalStorage() {
   if (!localStorage.getItem('books')) {
@@ -23,7 +23,7 @@ function getBooks() {
 
 function removeBook(id) {
   const books = getBooks();
-   let b=books.filter(book=> book.id.toString() !== id) //new array is return and old element with the id is removed 
+  const b = books.filter((book) => book.id.toString() !== id);
   localStorage.setItem('books', JSON.stringify(b));
   document.querySelector(`#container${id}`).remove();
 }
@@ -44,7 +44,7 @@ function showBook() {
   const books = getBooks();
   bookCard.innerHTML = '';
   for (let i = 0; i < books.length; i += 1) {
-    let book = books[i];
+    const book = books[i];
     bookCard.innerHTML += `
         <div id="container${book.id}">
         <p>${book.title}</p>
@@ -53,13 +53,13 @@ function showBook() {
         <hr>
         </div>
         `;
-    const removeButton = document.querySelectorAll(`.remove-button`);
+    const removeButton = document.querySelectorAll('.remove-button');
     if (removeButton.length) {
-      removeButton.forEach(button=>{
-        button.addEventListener('click', (e) => {
+      removeButton.forEach((button) => {
+        button.addEventListener('click', () => {
           removeBookFromLocalStorage(button.id);
         });
-      }) 
+      });
     }
     bookShelf.appendChild(bookCard);
   }
@@ -72,7 +72,8 @@ document.querySelector('.book-input').addEventListener('submit', (e) => {
   const title = inputTitle.value;
   const author = inputAuthor.value;
 
-  const book = { id:randomId(),
+  const book = {
+    id: randomId(),
     title,
     author,
   };
@@ -80,4 +81,3 @@ document.querySelector('.book-input').addEventListener('submit', (e) => {
   clearFields();
   showBook();
 });
-
