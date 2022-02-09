@@ -20,6 +20,7 @@ function getBooks() {
 }
 
 function removeBook(id) {
+  populateLocalStorage(); // check if local storage is empty
   const books = getBooks();
   books.splice(id, 1);
 
@@ -49,15 +50,17 @@ function showBook() {
         <div id="container${i}">
         <p>${books[i].title}</p>
         <p>${books[i].author}</p>
-        <button type="submit" id="book${i}" onclick="removeBookFromLocalStorage(${i})" class="remove-button">Remove</button><br><br>
+        <button type="submit" id="book${i}"  class="remove-button">Remove</button><br><br>
         <hr>
         </div>
         `;
-    bookCard.onclick = () => {
-      console.log('kjejejee');
-      removeBookFromLocalStorage(i);
-    };
+    // onclick="removeBookFromLocalStorage(${i})"
+
     bookShelf.appendChild(bookCard);
+    document.querySelector(`#book${i}`).addEventListener('click', (e) => {
+      console.log('kjejejee');
+      removeBookFromLocalStorage(e.target.parentElement.id);
+    });
   }
 }
 showBook();
