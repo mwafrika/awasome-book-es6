@@ -1,10 +1,12 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Portfolio
+# Awesome Books Project
 
-> One paragraph statement about the project.
+> A web app to add you books in a digital shelf.
 
-![screenshot]()
+![screenshot](./assets/images/1.png)
+![screenshot](./assets/images/2.png)
+
 
 Additional description about the project and its features.
 
@@ -16,7 +18,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://vikipretium.github.io/)
+[Live Demo Link](https://vikipretium.github.io/awesome-books-project/)
 
 ## Author
 
