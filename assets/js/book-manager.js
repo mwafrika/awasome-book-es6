@@ -1,10 +1,10 @@
 const inputTitle = document.querySelector('.input-title');
 const inputAuthor = document.querySelector('.input-author');
-const addButton = document.querySelector('.add-button');
+// const addButton = document.querySelector('.add-button');
 const bookShelf = document.querySelector('.book-shelf');
-let bookCard = document.createElement('div');
+const bookCard = document.createElement('div');
 
-let Book = function BookList(title, author) {
+const Book = function BookList(title, author) {
   this.title = title;
   this.author = author;
 
@@ -26,22 +26,19 @@ let Book = function BookList(title, author) {
 
   this.addToLocalStorage = function addToLocalStorage(book) {
     let books = this.getToloStorage();
-    console.log(book, 'add');
     books.push(book);
     localStorage.setItem('books', JSON.stringify(books));
   };
 
   this.removeToLocalStorage = function removeToLocalStorage(id) {
     let books = this.getToloStorage();
-    let tempBooks = [];
-    console.log(books);
+    const tempBooks = [];
     books.forEach((book, index) => {
-      if (index !== parseInt(id)) {
+      if (index !== parseInt(id, 10)) {
         tempBooks.push(book);
       }
     });
     books = tempBooks;
-    console.log(tempBooks);
     localStorage.setItem('books', JSON.stringify(books));
   };
 
@@ -55,7 +52,8 @@ let Book = function BookList(title, author) {
         <div id=${id}>
         <p>${book.title}</p>
         <p>${book.author}</p>
-        <button type="submit" class="remove-button">Remove</button>
+        <button type="submit" class="remove-button">Remove</button><br><br>
+        <hr>
         </div>
         `;
     bookShelf.appendChild(bookCard);
@@ -65,7 +63,6 @@ let Book = function BookList(title, author) {
     const obj = this.getToloStorage();
 
     obj.forEach((book, index) => {
-      console.log('itemsss', index);
       this.addBook(book, index);
     });
   };
@@ -85,7 +82,6 @@ document.querySelector('.book-input').addEventListener('submit', (e) => {
 });
 
 bookShelf.addEventListener('click', function (event) {
-  console.log('Parent', event.target.parentElement.id);
   const bookList = new Book();
   bookList.removeButton(event.target);
   bookList.removeToLocalStorage(event.target.parentElement.id);
