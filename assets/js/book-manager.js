@@ -25,7 +25,7 @@ const Book = function BookList(title, author) {
   };
 
   this.addToLocalStorage = function addToLocalStorage(book) {
-    let books = this.getToloStorage();
+    const books = this.getToloStorage();
     books.push(book);
     localStorage.setItem('books', JSON.stringify(books));
   };
@@ -81,7 +81,7 @@ document.querySelector('.book-input').addEventListener('submit', (e) => {
   }
 });
 
-bookShelf.addEventListener('click', function (event) {
+bookShelf.addEventListener('click', (event) => {
   const bookList = new Book();
   bookList.removeButton(event.target);
   bookList.removeToLocalStorage(event.target.parentElement.id);
