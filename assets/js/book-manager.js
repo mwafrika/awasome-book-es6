@@ -20,7 +20,6 @@ function getBooks() {
 }
 
 function removeBook(id) {
-  populateLocalStorage(); // check if local storage is empty
   const books = getBooks();
   books.splice(id, 1);
 
@@ -35,34 +34,34 @@ function addBook(book) {
 }
 
 function removeBookFromLocalStorage(id) {
-  console.log(id, 'remove book');
   removeBook(id);
+  showBook();
 }
 
 function showBook() {
   populateLocalStorage();
-
   const books = getBooks();
-  console.log(books, 'books');
   bookCard.innerHTML = '';
-  for (let i = 0; i < books.length; i++) {
+  for (let i = 0; i < books.length; i += 1) {
     bookCard.innerHTML += `
         <div id="container${i}">
         <p>${books[i].title}</p>
         <p>${books[i].author}</p>
-        <button type="submit" id="book${i}"  class="remove-button">Remove</button><br><br>
+        <button type="submit" id="book${i}" class="remove-button">Remove</button><br><br>
         <hr>
         </div>
         `;
-    // onclick="removeBookFromLocalStorage(${i})"
-
+    const removeButton = document.querySelector(`#book${i}`);
+    if (removeButton) {
+      console.log(removeButton, i, 'cliked');
+      removeButton.addEventListener('click', (e) => {
+        removeBookFromLocalStorage(`${parseInt(i)}`);
+      });
+    }
     bookShelf.appendChild(bookCard);
-    document.querySelector(`#book${i}`).addEventListener('click', (e) => {
-      console.log('kjejejee');
-      removeBookFromLocalStorage(e.target.parentElement.id);
-    });
   }
 }
+
 showBook();
 
 document.querySelector('.book-input').addEventListener('submit', (e) => {
@@ -74,7 +73,6 @@ document.querySelector('.book-input').addEventListener('submit', (e) => {
     title,
     author,
   };
-  console.log(book);
   addBook(book);
   clearFields();
   showBook();

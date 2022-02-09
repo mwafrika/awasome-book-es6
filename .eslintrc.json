@@ -16,7 +16,8 @@
     "eol-last": "off",
     "import/extensions": [ 1, {
       "js": "always", "json": "always"
-    }]
+    }],
+    "no-use-before-define": ["error", { "functions": false, "classes": false, "variables": false }]
   },
   "ignorePatterns": [
     "dist/",
