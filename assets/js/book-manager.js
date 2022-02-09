@@ -34,17 +34,16 @@ function addBook(book) {
 }
 
 function removeBookFromLocalStorage(id) {
-  console.log(id, 'remove book');
   removeBook(id);
+  showBook();
 }
 
 function showBook() {
   populateLocalStorage();
 
   const books = getBooks();
-  console.log(books, 'books');
   bookCard.innerHTML = '';
-  for (let i = 0; i < books.length; i++) {
+  for (let i = 0; i < books.length; i += 1) {
     bookCard.innerHTML += `
         <div id="container${i}">
         <p>${books[i].title}</p>
@@ -53,13 +52,10 @@ function showBook() {
         <hr>
         </div>
         `;
-    bookCard.onclick = () => {
-      console.log('kjejejee');
-      removeBookFromLocalStorage(i);
-    };
     bookShelf.appendChild(bookCard);
   }
 }
+
 showBook();
 
 document.querySelector('.book-input').addEventListener('submit', (e) => {
@@ -71,7 +67,6 @@ document.querySelector('.book-input').addEventListener('submit', (e) => {
     title,
     author,
   };
-  console.log(book);
   addBook(book);
   clearFields();
   showBook();
