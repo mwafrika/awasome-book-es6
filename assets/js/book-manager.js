@@ -2,6 +2,7 @@ const inputTitle = document.querySelector('.input-title');
 const inputAuthor = document.querySelector('.input-author');
 const bookShelf = document.querySelector('.book-shelf');
 const bookCard = document.createElement('div');
+const randomId = () => Math.round(Math.random() * 1000); 
 
 function populateLocalStorage() {
   if (!localStorage.getItem('books')) {
@@ -43,19 +44,19 @@ function showBook() {
   const books = getBooks();
   bookCard.innerHTML = '';
   for (let i = 0; i < books.length; i += 1) {
+    let book = books[i];
     bookCard.innerHTML += `
-        <div id="container${i}">
-        <p>${books[i].title}</p>
-        <p>${books[i].author}</p>
-        <button type="submit" id="book${i}" class="remove-button">Remove</button><br><br>
+        <div id="${book.id}">
+        <p>${book.title}</p>
+        <p>${book.author}</p>
+        <button type="button" id="${book.id}" class="remove-button">Remove</button><br><br>
         <hr>
         </div>
         `;
     const removeButton = document.querySelector(`#book${i}`);
     if (removeButton) {
-      console.log(removeButton, i, 'cliked');
       removeButton.addEventListener('click', (e) => {
-        removeBookFromLocalStorage(`${parseInt(i)}`);
+        removeBookFromLocalStorage(`${parseInt(i, 10)}`);
       });
     }
     bookShelf.appendChild(bookCard);
@@ -69,7 +70,7 @@ document.querySelector('.book-input').addEventListener('submit', (e) => {
   const title = inputTitle.value;
   const author = inputAuthor.value;
 
-  const book = {
+  const book = { id:randomId(),
     title,
     author,
   };
@@ -77,3 +78,4 @@ document.querySelector('.book-input').addEventListener('submit', (e) => {
   clearFields();
   showBook();
 });
+
