@@ -9,6 +9,7 @@ class Book {
     this.title = title;
     this.author = author;
   }
+
   populateLocalStorage = () => {
     const books = this.getBooks();
     if (!books) {
