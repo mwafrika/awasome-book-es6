@@ -23,13 +23,13 @@ body {
   flex-direction: row;
   align-self: center;
   width: 80rem;
-  background-color: darkgray;
+  height: 32rem;
 }
 
 .form-container {
   width: 40%;
   height: 100%;
-  background-color: violet;
+  background-color: rgb(49, 71, 160);
 }
 
 form {
@@ -79,4 +79,68 @@ form input::-webkit-input-placeholder {
 
 form input:focus {
   outline: none;
+}
+
+.book-shelf {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 80%;
+  height: 100%;
+}
+
+.book-container {
+  display: flex;
+  row-gap: 30px;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  height: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.book-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 90%;
+  height: auto;
+  row-gap: 0.5rem;
+  border-radius: 10px;
+  background-color: rgb(49, 71, 160);
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px 20px;
+}
+
+.book-container button {
+  width: 100%;
+  height: 3rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
+  cursor: pointer;
+}
+
+.book-info {
+  display: flex;
+  flex-direction: row;
+  width: 55%;
+  height: 100%;
+  justify-content: flex-start;
+  column-gap: 1rem;
+  color: white;
+  align-items: center;
+  /* background-color: rgb(197, 198, 202); */
 }

@@ -47,17 +47,19 @@ class Book {
     for (let i = 0; i < books.length; i += 1) {
       const book = books[i];
       bookCard.innerHTML += `
-        <div id="container${book.id}">
-        <p>${book.title}</p>
-        <p>${book.author}</p>
-        <span style="font-size:3rem">
-        <i class="fa-solid fa-book"></i>
-        </span>
-        <button type="button" id="${book.id}" class="remove-button">Remove</button><br><br>
-        <hr>
+      <div class="book-row" id="container${book.id}">
+        <div class="book-info"> 
+          <p>${book.title}</p> 
+          <p>BY</p>
+          <p>${book.author}</p>
         </div>
+        <div class="btn-container">
+          <button type="button" id="${book.id}" class="remove-button">Remove</button>
+        </div>
+      </div>
         `;
       bookShelf.appendChild(bookCard);
+      bookCard.classList.add('book-container');
       const removeButton = document.querySelectorAll('.remove-button');
       if (removeButton.length) {
         removeButton.forEach((button) => {
