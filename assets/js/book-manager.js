@@ -4,12 +4,12 @@ const bookShelf = document.querySelector('.book-shelf');
 const bookCard = document.createElement('div');
 const bookForm = document.querySelector('.book-input');
 
+
 class Book {
   constructor(title, author) {
     this.title = title;
     this.author = author;
-  }
-
+  
   populateLocalStorage = () => {
     const books = this.getBooks();
     if (!books) {
@@ -48,11 +48,11 @@ class Book {
         <span style="font-size:3rem">
         <i class="fa-solid fa-book"></i>
         </span>
-        
         <button type="button" id="${book.id}" class="remove-button">Remove</button><br><br>
         <hr>
         </div>
         `;
+        
       const removeButton = document.querySelectorAll('.remove-button');
       if (removeButton.length) {
         removeButton.forEach((button) => {
