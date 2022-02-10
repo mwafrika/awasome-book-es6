@@ -3,77 +3,152 @@ const inputAuthor = document.querySelector('.input-author');
 const bookShelf = document.querySelector('.book-shelf');
 const bookCard = document.createElement('div');
 
-function populateLocalStorage() {
-  if (!localStorage.getItem('books')) {
-    localStorage.setItem('books', JSON.stringify([]));
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
   }
-}
 
-function clearFields() {
-  inputTitle.value = '';
-  inputAuthor.value = '';
-}
+  randomId() {
+    return Math.round(Math.random() * 10000000);
+  }
 
-function getBooks() {
-  const books = JSON.parse(localStorage.getItem('books'));
-  return books;
-}
+  populateLocalStorage() {
+    if (!localStorage.getItem('books')) {
+      localStorage.setItem('books', JSON.stringify([]));
+    }
+  }
+  clearFields() {
+    inputTitle.value = '';
+    inputAuthor.value = '';
+  }
 
-function removeBook(id) {
-  const books = getBooks();
-  books.splice(id, 1);
-
-  localStorage.setItem('books', JSON.stringify(books));
-  document.querySelector(`#container${id}`).remove();
-}
-
-function addBook(book) {
-  const books = getBooks();
-  books.push(book);
-  localStorage.setItem('books', JSON.stringify(books));
-}
-
-function removeBookFromLocalStorage(id) {
-  removeBook(id);
-  showBook();
-}
-
-function showBook() {
-  populateLocalStorage();
-  const books = getBooks();
-  bookCard.innerHTML = '';
-  for (let i = 0; i < books.length; i += 1) {
-    bookCard.innerHTML += `
-        <div id="container${i}">
-        <p>${books[i].title}</p>
-        <p>${books[i].author}</p>
-        <button type="submit" id="book${i}" class="remove-button">Remove</button><br><br>
+  getBooks() {
+    const books = JSON.parse(localStorage.getItem('books'));
+    return books;
+  }
+  removeBook(id) {
+    const books = this.getBooks();
+    const newBooks = books.filter((book) => book.id.toString() !== id);
+    localStorage.setItem('books', JSON.stringify(newBooks));
+    document.querySelector(`#container${id}`).remove();
+  }
+  addBook(book) {
+    const books = this.getBooks();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+  showBook() {
+    this.populateLocalStorage();
+    const books = this.getBooks();
+    bookCard.innerHTML = '';
+    for (let i = 0; i < books.length; i += 1) {
+      const book = books[i];
+      bookCard.innerHTML += `
+        <div id="container${book.id}">
+        <p>${book.title}</p>
+        <p>${book.author}</p>
+        <button type="button" id="${book.id}" class="remove-button">Remove</button><br><br>
         <hr>
         </div>
         `;
-    const removeButton = document.querySelector(`#book${i}`);
-    if (removeButton) {
-      console.log(removeButton, i, 'cliked');
-      removeButton.addEventListener('click', (e) => {
-        removeBookFromLocalStorage(`${parseInt(i)}`);
-      });
+      const removeButton = document.querySelectorAll('.remove-button');
+      if (removeButton.length) {
+        removeButton.forEach((button) => {
+          button.addEventListener('click', () => {
+            this.removeBookFromLocalStorage(button.id);
+          });
+        });
+      }
+      bookShelf.appendChild(bookCard);
     }
-    bookShelf.appendChild(bookCard);
+  }
+
+  removeBookFromLocalStorage(id) {
+    this.removeBook(id);
+    this.showBook();
   }
 }
 
-showBook();
+// const randomId = () => Math.round(Math.random() * 100);
+
+// function populateLocalStorage() {
+//   if (!localStorage.getItem('books')) {
+//     localStorage.setItem('books', JSON.stringify([]));
+//   }
+// }
+
+// function clearFields() {
+//   inputTitle.value = '';
+//   inputAuthor.value = '';
+// }
+
+// function getBooks() {
+//   const books = JSON.parse(localStorage.getItem('books'));
+//   return books;
+// }
+
+// function removeBook(id) {
+//   const books = getBooks();
+//   const b = books.filter((book) => book.id.toString() !== id);
+//   localStorage.setItem('books', JSON.stringify(b));
+//   document.querySelector(`#container${id}`).remove();
+// }
+
+// function addBook(book) {
+//   const books = getBooks();
+//   books.push(book);
+//   localStorage.setItem('books', JSON.stringify(books));
+// }
+
+// function removeBookFromLocalStorage(id) {
+//   removeBook(id);
+//   showBook();
+// }
+
+// function showBook() {
+//   populateLocalStorage();
+//   const books = getBooks();
+//   bookCard.innerHTML = '';
+//   for (let i = 0; i < books.length; i += 1) {
+//     const book = books[i];
+//     bookCard.innerHTML += `
+//         <div id="container${book.id}">
+//         <p>${book.title}</p>
+//         <p>${book.author}</p>
+//         <button type="button" id="${book.id}" class="remove-button">Remove</button><br><br>
+//         <hr>
+//         </div>
+//         `;
+//     const removeButton = document.querySelectorAll('.remove-button');
+//     if (removeButton.length) {
+//       removeButton.forEach((button) => {
+//         button.addEventListener('click', () => {
+//           removeBookFromLocalStorage(button.id);
+//         });
+//       });
+//     }
+//     bookShelf.appendChild(bookCard);
+//   }
+// }
+
+// showBook();
 
 document.querySelector('.book-input').addEventListener('submit', (e) => {
   e.preventDefault();
-  const title = inputTitle.value;
-  const author = inputAuthor.value;
+  const book = new Book(inputTitle.value, inputAuthor.value);
+  const title = book.title;
+  const author = book.author;
+  const id = book.randomId();
 
-  const book = {
+  const bookObjt = {
+    id: id,
     title,
     author,
   };
-  addBook(book);
-  clearFields();
-  showBook();
+  if (title && author) {
+    book.addBook(bookObjt);
+    book.clearFields();
+    book.showBook();
+  }
 });
