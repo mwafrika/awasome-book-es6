@@ -4,12 +4,11 @@ const bookShelf = document.querySelector('.book-shelf');
 const bookCard = document.createElement('div');
 const bookForm = document.querySelector('.book-input');
 
-
 class Book {
   constructor(title, author) {
     this.title = title;
     this.author = author;
-  
+  }
   populateLocalStorage = () => {
     const books = this.getBooks();
     if (!books) {
@@ -35,6 +34,11 @@ class Book {
     localStorage.setItem('books', JSON.stringify(books));
   };
 
+  removeBookFromLocalStorage = (id) => {
+    this.removeBook(id);
+    this.showBook();
+  };
+
   showBook = () => {
     this.populateLocalStorage();
     const books = this.getBooks();
@@ -52,7 +56,7 @@ class Book {
         <hr>
         </div>
         `;
-        
+      bookShelf.appendChild(bookCard);
       const removeButton = document.querySelectorAll('.remove-button');
       if (removeButton.length) {
         removeButton.forEach((button) => {
@@ -61,14 +65,8 @@ class Book {
           });
         });
       }
-      bookShelf.appendChild(bookCard);
     }
   };
-
-  removeBookFromLocalStorage(id) {
-    this.removeBook(id);
-    this.showBook();
-  }
 }
 
 const book = new Book(inputTitle.value, inputAuthor.value);
