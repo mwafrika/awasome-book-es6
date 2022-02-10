@@ -2,7 +2,7 @@ const inputTitle = document.querySelector('.input-title');
 const inputAuthor = document.querySelector('.input-author');
 const bookShelf = document.querySelector('.book-shelf');
 const bookCard = document.createElement('div');
-const bookForm = document.querySelector('.book-input'); '';
+const bookForm = document.querySelector('.book-input');
 
 class Book {
   constructor(title, author) {
