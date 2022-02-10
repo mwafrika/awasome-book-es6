@@ -43,6 +43,8 @@ class Book {
         <div id="container${book.id}">
         <p>${book.title}</p>
         <p>${book.author}</p>
+        <span></span>
+        
         <button type="button" id="${book.id}" class="remove-button">Remove</button><br><br>
         <hr>
         </div>
