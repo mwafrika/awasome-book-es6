@@ -8,6 +8,35 @@ body {
   height: 100%;
 }
 
+#navbar {
+  border: 3px solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 30px;
+}
+
+#navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+  align-items: center;
+}
+
+.vl {
+  width: 3px;
+  height: 20px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+
+#navbar a {
+  text-decoration: none;
+  color: black;
+}
+
 .main-container {
   width: 100%;
   padding: 0;
@@ -158,3 +187,4 @@ form input::-webkit-input-placeholder {
 form input:focus {
   outline: none;
 }
+
