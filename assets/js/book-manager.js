@@ -2,7 +2,7 @@ const inputTitle = document.querySelector('.input-title');
 const inputAuthor = document.querySelector('.input-author');
 const bookShelf = document.querySelector('.book-shelf');
 const bookCard = document.createElement('div');
-const bookForm = document.querySelector('.book-input');
+const bookForm = document.querySelector('.book-input'); '';
 
 class Book {
   constructor(title, author) {
@@ -11,7 +11,7 @@ class Book {
   }
 
   populateLocalStorage = () => {
-    let books = this.getBooks();
+    const books = this.getBooks();
     if (!books) {
       localStorage.setItem('books', JSON.stringify([]));
     }
@@ -28,11 +28,13 @@ class Book {
     localStorage.setItem('books', JSON.stringify(newBooks));
     document.querySelector(`#container${id}`).remove();
   };
+
   addBook = (book) => {
     const books = this.getBooks();
     books.push(book);
     localStorage.setItem('books', JSON.stringify(books));
   };
+
   showBook = () => {
     this.populateLocalStorage();
     const books = this.getBooks();
@@ -60,6 +62,7 @@ class Book {
       bookShelf.appendChild(bookCard);
     }
   };
+
   removeBookFromLocalStorage(id) {
     this.removeBook(id);
     this.showBook();
@@ -75,7 +78,7 @@ bookForm.addEventListener('submit', (e) => {
   const id = Math.round(Math.random() * 10000000);
 
   const bookObjt = {
-    id: id,
+    id,
     title,
     author,
   };
