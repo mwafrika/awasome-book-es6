@@ -49,7 +49,7 @@ class Book {
       bookCard.innerHTML += `
       <div class="book-row" id="container${book.id}">
         <div class="book-info"> 
-          <p>${book.title}</p> 
+          <p>"${book.title}"</p> 
           <p>BY</p>
           <p>${book.author}</p>
         </div>
