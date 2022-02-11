@@ -128,7 +128,7 @@ function addfun(e) {
 
 function confun(e) {
   console.log('this is con' + e);
-  if(e.currentTarget === connav){
+  if(e.currentTarget === navcon){
   list.style.display = 'none';
   addNew.style.display = 'none';
   connav.style.display = 'flex';
