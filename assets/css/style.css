@@ -75,7 +75,7 @@ body {
   flex-direction: row;
   align-self: center;
   width: 80%;
-  max-height: 300px;
+  max-height: 500px;
   padding: 0 0 30px 0;
 }
 
@@ -84,7 +84,7 @@ body {
   flex-direction: column;
   align-self: center;
   width: 100%;
-  max-height: 250px;
+  max-height: 450px;
 }
 
 .book-container {
