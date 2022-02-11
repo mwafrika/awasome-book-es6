@@ -142,3 +142,9 @@ navlist.addEventListener('click', listfun);
 navadd.addEventListener('click', addfun);
 
 navcon.addEventListener('click', confun)
+
+// eslint-disable-next-line no-unused-vars
+const displayTime = () => {
+  document.getElementById('current-date').innerHTML = new Date().toLocaleString();
+  setTimeout(displayTime, 1000);
+};

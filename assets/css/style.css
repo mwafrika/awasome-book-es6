@@ -36,6 +36,11 @@ body {
   border-radius: 10px;
 }
 
+#current-date {
+  float: right;
+}
+
+
 
 #navbar a {
   text-decoration: none;
