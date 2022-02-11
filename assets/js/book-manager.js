@@ -4,8 +4,6 @@ const bookShelf = document.querySelector('.book-shelf');
 const bookCard = document.createElement('div');
 const bookForm = document.querySelector('.book-input');
 
-
-
 class Book {
   constructor(title, author) {
     this.title = title;
@@ -79,10 +77,7 @@ const book = new Book(inputTitle.value, inputAuthor.value);
 bookForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const book = new Book(inputTitle.value, inputAuthor.value);
-  const {
-    title,
-    author
-  } = book;
+  const { title, author } = book;
   const id = Math.round(Math.random() * 10000000);
 
   const bookObjt = {
@@ -105,46 +100,45 @@ const navcon = document.querySelector('#contact-button');
 
 const list = document.querySelector('#list');
 const addNew = document.querySelector('#add');
-const connav = document.querySelector('#contact')
+const connav = document.querySelector('#contact');
 
 function listfun(e) {
   console.log('this is list' + e);
-  if(e.currentTarget === navlist){
+  if (e.currentTarget === navlist) {
     list.style.display = 'flex';
     addNew.style.display = 'none';
     connav.style.display = 'none';
   }
-
 }
 
 function addfun(e) {
   console.log('this is add' + e);
-  if(e.currentTarget === navadd){
-  list.style.display = 'none';
-  addNew.style.display = 'flex';
-  connav.style.display = 'none';
+  if (e.currentTarget === navadd) {
+    list.style.display = 'none';
+    addNew.style.display = 'flex';
+    connav.style.display = 'none';
   }
 }
 
 function confun(e) {
   console.log('this is con' + e);
-  if(e.currentTarget === navcon){
-  list.style.display = 'none';
-  addNew.style.display = 'none';
-  connav.style.display = 'flex';
+  if (e.currentTarget === navcon) {
+    list.style.display = 'none';
+    addNew.style.display = 'none';
+    connav.style.display = 'flex';
   }
 }
-
-
 
 navlist.addEventListener('click', listfun);
 
 navadd.addEventListener('click', addfun);
 
-navcon.addEventListener('click', confun)
+navcon.addEventListener('click', confun);
 
 // eslint-disable-next-line no-unused-vars
 const displayTime = () => {
-  document.getElementById('current-date').innerHTML = new Date().toLocaleString();
-  setTimeout(displayTime, 1000);
+  document.getElementById('current-date').innerHTML =
+    new Date().toLocaleDateString();
 };
+
+setTimeout(displayTime, 1000);
