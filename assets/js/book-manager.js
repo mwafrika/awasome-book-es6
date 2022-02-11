@@ -108,7 +108,8 @@ const addNew = document.querySelector('#add');
 const connav = document.querySelector('#contact')
 
 function listfun(e) {
-  if(e.target === navlist){
+  console.log('this is list' + e);
+  if(e.currentTarget === navlist){
     list.style.display = 'flex';
     addNew.style.display = 'none';
     connav.style.display = 'none';
@@ -117,7 +118,8 @@ function listfun(e) {
 }
 
 function addfun(e) {
-  if(e.target === navadd){
+  console.log('this is add' + e);
+  if(e.currentTarget === navadd){
   list.style.display = 'none';
   addNew.style.display = 'flex';
   connav.style.display = 'none';
@@ -125,7 +127,8 @@ function addfun(e) {
 }
 
 function confun(e) {
-  if(e.target === connav){
+  console.log('this is con' + e);
+  if(e.currentTarget === connav){
   list.style.display = 'none';
   addNew.style.display = 'none';
   connav.style.display = 'flex';
