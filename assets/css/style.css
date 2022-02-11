@@ -232,7 +232,7 @@ form input:focus {
   display: none;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 #contact {
@@ -256,4 +256,5 @@ footer {
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
