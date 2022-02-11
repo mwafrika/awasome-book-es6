@@ -137,8 +137,6 @@ navcon.addEventListener('click', confun);
 
 // eslint-disable-next-line no-unused-vars
 const displayTime = () => {
-  document.getElementById('current-date').innerHTML =
-    new Date().toLocaleDateString();
+  document.getElementById('current-date').innerHTML = new Date().toLocaleString();
+  setTimeout(displayTime, 1000);
 };
-
-setTimeout(displayTime, 1000);
