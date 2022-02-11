@@ -140,3 +140,4 @@ const displayTime = () => {
   document.getElementById('current-date').innerText = new Date().toLocaleString();
   setTimeout(displayTime, 1000);
 };
+displayTime();
