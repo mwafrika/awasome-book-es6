@@ -20,7 +20,7 @@
       <a href="">Awesome Books</a>
       <ul>
           <li>
-              <a href="" id="show-list-button" class="active">List</a>
+              <a href="" id="show-list-button">List</a>
           </li>
           <li>
               <div class="vl"></div>
@@ -32,16 +32,19 @@
               <div class="vl"></div>
           </li>
           <li>
-              <a href="" id="contact-info-button">Contact</a>
+              <a href="" id="contact-button">Contact</a>
           </li>
       </ul>
   </nav>
   </header>
-    <section class="main-container">
-      <h1>All Awesome books</h1>
+    <main class="main-container">
+      <section id="list"> 
+      <h1>All Awesome Books</h1>
       <div class="container">
         <div class="book-shelf"></div>
       </div>
+    </section>
+    <section id="add">
         <div class="form-container">
           <h2>Awesome Books</h2>
           <form class="book-input">
@@ -58,7 +61,14 @@
             <button type="submit" class="add-button">Add</button>
           </form>
         </div>
-    </section>
+      </section>
+      <section id="contact">
+        <div>contact</div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p>contact</p>
+    </footer>
     <script src="./assets/js/book-manager.js"></script>
   </body>
 </html>

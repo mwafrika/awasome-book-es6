@@ -4,6 +4,8 @@ const bookShelf = document.querySelector('.book-shelf');
 const bookCard = document.createElement('div');
 const bookForm = document.querySelector('.book-input');
 
+
+
 class Book {
   constructor(title, author) {
     this.title = title;
@@ -77,7 +79,10 @@ const book = new Book(inputTitle.value, inputAuthor.value);
 bookForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const book = new Book(inputTitle.value, inputAuthor.value);
-  const { title, author } = book;
+  const {
+    title,
+    author
+  } = book;
   const id = Math.round(Math.random() * 10000000);
 
   const bookObjt = {
@@ -93,3 +98,44 @@ bookForm.addEventListener('submit', (e) => {
 });
 
 window.addEventListener('DOMContentLoaded', book.showBook());
+
+const navlist = document.querySelector('#show-list-button');
+const navadd = document.querySelector('#add-new-button');
+const navcon = document.querySelector('#contact-button');
+
+const list = document.querySelector('#list');
+const addNew = document.querySelector('#add');
+const connav = document.querySelector('#contact')
+
+function listfun(e) {
+  if(e.target === navlist){
+    list.style.display = 'flex';
+    addNew.style.display = 'none';
+    connav.style.display = 'none';
+  }
+
+}
+
+function addfun(e) {
+  if(e.target === navadd){
+  list.style.display = 'none';
+  addNew.style.display = 'flex';
+  connav.style.display = 'none';
+  }
+}
+
+function confun(e) {
+  if(e.target === connav){
+  list.style.display = 'none';
+  addNew.style.display = 'none';
+  connav.style.display = 'flex';
+  }
+}
+
+
+
+navlist.addEventListener('click', listfun);
+
+navadd.addEventListener('click', addfun);
+
+navcon.addEventListener('click', confun)
