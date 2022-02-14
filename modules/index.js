@@ -1,14 +1,19 @@
-const inputTitle = document.querySelector('.input-title');
-const inputAuthor = document.querySelector('.input-author');
-const bookShelf = document.querySelector('.book-shelf');
-const bookCard = document.createElement('div');
-const bookForm = document.querySelector('.book-input');
-const navlist = document.querySelector('#show-list-button');
-const navadd = document.querySelector('#add-new-button');
-const navcon = document.querySelector('#contact-button');
-const list = document.querySelector('#list');
-const addNew = document.querySelector('#add');
-const connav = document.querySelector('#contact');
+import {
+  inputTitle,
+  inputAuthor,
+  bookShelf,
+  bookCard,
+  bookForm,
+  navlist,
+  navadd,
+  navcon,
+  list,
+  addNew,
+  connav,
+} from './includes.js';
+
+import { DateTime } from './luxon.js';
+
 class Book {
   constructor(title, author) {
     this.title = title;
@@ -131,7 +136,9 @@ navadd.addEventListener('click', addfun);
 navcon.addEventListener('click', confun);
 
 const displayTime = () => {
-  document.getElementById('current-date').innerText = new Date().toLocaleString();
+  document.getElementById('current-date').innerText = DateTime.now().toFormat(
+    "HH 'hours and' mm 'minutes'",
+  );
   setTimeout(displayTime, 1000);
 };
 displayTime();

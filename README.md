@@ -4,9 +4,17 @@
 
 > A web app to add your books in a digital shelf. This webapp is built with vanila javascript. A local storage option is added with this project, so that a user can store data in this is web app.
 
-![screenshot](./assets/images/1.png)
+## Add a new book
 
-![screenshot](./assets/images/2.png)
+![screenshot](./modules/assets/add.png)
+
+## Show all the available books
+
+![screenshot](./modules/assets/list.png)
+
+## Contact page
+
+![screenshot](./modules/assets/contact.png)
 
 Additional description about the project and its features.
 
