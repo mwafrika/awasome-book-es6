@@ -135,8 +135,7 @@ navadd.addEventListener('click', addfun);
 navcon.addEventListener('click', confun);
 
 const displayTime = () => {
-  document.getElementById('current-date').innerText =
-    DateTime.now().toLocaleString(DateTime.DATETIME_MED);
+  document.getElementById('current-date').innerText = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
   setTimeout(displayTime, 1000);
 };
 displayTime();
