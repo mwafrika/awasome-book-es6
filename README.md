@@ -2,12 +2,11 @@
 
 # Awesome Books Project
 
-> A web app to add your books in a digital shelf. This webapp is built with vanila javascript. A local storage option is added with this project, so that a user can store data in this is web app. 
+> A web app to add your books in a digital shelf. This webapp is built with vanila javascript. A local storage option is added with this project, so that a user can store data in this is web app.
 
 ![screenshot](./assets/images/1.png)
 
 ![screenshot](./assets/images/2.png)
-
 
 Additional description about the project and its features.
 
@@ -20,7 +19,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://vikipretium.github.io/awesome-books-project/)
+[Live Demo Link](https://mwafrika.github.io/awasome-book-es6/)
 
 ## Built With
 
@@ -46,7 +45,7 @@ The basic requirements for building the executable are:
 #### Cloning the project
 
 ```
-git clone https://github.com/vikipretium/awesome-books-project.git 
+git clone https://github.com/vikipretium/awesome-books-project.git
 ```
 
 ## Getting packages and debuging with Stylelint
