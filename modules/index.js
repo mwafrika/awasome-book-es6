@@ -1,8 +1,17 @@
-const inputTitle = document.querySelector('.input-title');
-const inputAuthor = document.querySelector('.input-author');
-const bookShelf = document.querySelector('.book-shelf');
-const bookCard = document.createElement('div');
-const bookForm = document.querySelector('.book-input');
+import { DateTime } from './luxon.js';
+import {
+  inputTitle,
+  inputAuthor,
+  bookShelf,
+  bookCard,
+  bookForm,
+  navlist,
+  navadd,
+  navcon,
+  list,
+  addNew,
+  connav,
+} from './includes.js';
 
 class Book {
   constructor(title, author) {
@@ -85,6 +94,7 @@ bookForm.addEventListener('submit', (e) => {
     title,
     author,
   };
+
   if (title && author) {
     book.addBook(bookObjt);
     bookForm.reset();
@@ -94,37 +104,29 @@ bookForm.addEventListener('submit', (e) => {
 
 window.addEventListener('DOMContentLoaded', book.showBook());
 
-const navlist = document.querySelector('#show-list-button');
-const navadd = document.querySelector('#add-new-button');
-const navcon = document.querySelector('#contact-button');
-
-const list = document.querySelector('#list');
-const addNew = document.querySelector('#add');
-const connav = document.querySelector('#contact');
-
-function listfun(e) {
+const listfun = (e) => {
   if (e.currentTarget === navlist) {
     list.style.display = 'flex';
     addNew.style.display = 'none';
     connav.style.display = 'none';
   }
-}
+};
 
-function addfun(e) {
+const addfun = (e) => {
   if (e.currentTarget === navadd) {
     list.style.display = 'none';
     addNew.style.display = 'flex';
     connav.style.display = 'none';
   }
-}
+};
 
-function confun(e) {
+const confun = (e) => {
   if (e.currentTarget === navcon) {
     list.style.display = 'none';
     addNew.style.display = 'none';
     connav.style.display = 'flex';
   }
-}
+};
 
 navlist.addEventListener('click', listfun);
 
@@ -132,9 +134,8 @@ navadd.addEventListener('click', addfun);
 
 navcon.addEventListener('click', confun);
 
-// eslint-disable-next-line no-unused-vars
 const displayTime = () => {
-  document.getElementById('current-date').innerText = new Date().toLocaleString();
+  document.getElementById('current-date').innerText = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
   setTimeout(displayTime, 1000);
 };
 displayTime();
