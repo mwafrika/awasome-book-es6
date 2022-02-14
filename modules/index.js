@@ -1,4 +1,4 @@
-import { DateTime } from 'https://moment.github.io/luxon/es6/luxon.js';
+import { DateTime } from './luxon.js';
 import {
   inputTitle,
   inputAuthor,
@@ -136,7 +136,7 @@ navcon.addEventListener('click', confun);
 
 const displayTime = () => {
   document.getElementById('current-date').innerText = DateTime.now().toFormat(
-    "HH 'hours and' mm 'minutes'"
+    "HH 'hours and' mm 'minutes'",
   );
   setTimeout(displayTime, 1000);
 };
